@@ -1,147 +1,506 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title id="title">Conni Australia - Offline</title>
-    <meta name="description" content="We are working hard right now to fix the problem" />
-    <meta name="keywords" content="" />
-    <meta name="author" content="Galway" />
+    <!-- ::CLOUDFLARE_ERROR_1000S_BOX:: -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BackSoon - Conni Australia</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-    <!--Favicon-->
-    <link rel="shortcut icon" href="favicon.ico" />
-    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 30%, #0f3460 100%);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        color: #ffffff;
+      }
 
-    <!--Fonts-->
-    <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,300,500,700" rel="stylesheet" type="text/css" />
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet" type="text/css" />
+      /* Liquid glass background elements */
+      .glass-orb {
+        position: absolute;
+        border-radius: 50%;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        animation: floatGlass 8s ease-in-out infinite;
+      }
 
-    <!--CSS-->
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
+      .glass-orb:nth-child(1) {
+        width: 200px;
+        height: 200px;
+        top: 10%;
+        left: -5%;
+        animation-delay: 0s;
+      }
+
+      .glass-orb:nth-child(2) {
+        width: 150px;
+        height: 150px;
+        top: 60%;
+        right: -10%;
+        animation-delay: 2s;
+      }
+
+      .glass-orb:nth-child(3) {
+        width: 120px;
+        height: 120px;
+        bottom: 20%;
+        left: 10%;
+        animation-delay: 4s;
+      }
+
+      .glass-orb:nth-child(4) {
+        width: 180px;
+        height: 180px;
+        top: 30%;
+        right: 15%;
+        animation-delay: 6s;
+      }
+
+      @keyframes floatGlass {
+        0%,
+        100% {
+          transform: translateY(0px) translateX(0px) rotate(0deg);
+          opacity: 0.3;
+        }
+        25% {
+          transform: translateY(-30px) translateX(20px) rotate(90deg);
+          opacity: 0.6;
+        }
+        50% {
+          transform: translateY(-10px) translateX(-15px) rotate(180deg);
+          opacity: 0.4;
+        }
+        75% {
+          transform: translateY(20px) translateX(10px) rotate(270deg);
+          opacity: 0.5;
+        }
+      }
+
+      .container {
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-radius: 24px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        padding: 48px 40px;
+        text-align: center;
+        box-shadow: 0 32px 64px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        max-width: 520px;
+        width: 90%;
+        position: relative;
+        animation: containerAppear 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      @keyframes containerAppear {
+        from {
+          opacity: 0;
+          transform: translateY(40px) scale(0.96);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      .logo-container {
+        margin-bottom: 32px;
+        position: relative;
+      }
+
+      .logo {
+        width: 72px;
+        height: 72px;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        border-radius: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 32px;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.9);
+        position: relative;
+        animation: logoFloat 3s ease-in-out infinite;
+        box-shadow: 0 8px 32px rgba(255, 255, 255, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      }
+
+      @keyframes logoFloat {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-8px);
+        }
+      }
+
+      .logo::before {
+        content: "";
+        position: absolute;
+        inset: -1px;
+        border-radius: 20px;
+        padding: 1px;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
+        mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        mask-composite: xor;
+        -webkit-mask-composite: xor;
+        opacity: 0;
+        animation: borderGlow 4s ease-in-out infinite;
+      }
+
+      @keyframes borderGlow {
+        0%,
+        100% {
+          opacity: 0;
+        }
+        50% {
+          opacity: 1;
+        }
+      }
+
+      h1 {
+        font-size: 48px;
+        font-weight: 700;
+        background: linear-gradient(135deg, #ffffff, rgba(255, 255, 255, 0.7));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 16px;
+        letter-spacing: -0.02em;
+        line-height: 1.1;
+      }
+
+      .subtitle {
+        font-size: 17px;
+        color: rgba(255, 255, 255, 0.7);
+        margin-bottom: 32px;
+        font-weight: 400;
+        line-height: 1.4;
+      }
+
+      .glass-card {
+        background: rgba(255, 255, 255, 0.06);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        border-radius: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 24px;
+        margin: 24px 0;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .glass-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      }
+
+      .message-card {
+        border-left: 3px solid rgba(255, 255, 255, 0.3);
+      }
+
+      .back-soon {
+        font-size: 20px;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.95);
+        margin-bottom: 12px;
+        letter-spacing: -0.01em;
+      }
+
+      .status-text {
+        color: rgba(255, 255, 255, 0.75);
+        font-size: 15px;
+        line-height: 1.5;
+        font-weight: 400;
+      }
+
+      .trusted-card {
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.06));
+        position: relative;
+        overflow: hidden;
+      }
+
+      .trusted-card::after {
+        content: "";
+        position: absolute;
+        top: -50%;
+        right: -50%;
+        width: 100%;
+        height: 200%;
+        background: conic-gradient(from 0deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+        animation: shimmerRotate 6s linear infinite;
+        pointer-events: none;
+      }
+
+      @keyframes shimmerRotate {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      .trusted-title {
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 12px;
+        position: relative;
+        z-index: 1;
+        color: rgba(255, 255, 255, 0.95);
+        letter-spacing: -0.01em;
+      }
+
+      .trusted-text {
+        font-size: 15px;
+        line-height: 1.5;
+        opacity: 0.8;
+        position: relative;
+        z-index: 1;
+        font-weight: 400;
+      }
+
+      .contact-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        color: rgba(255, 255, 255, 0.95);
+        padding: 16px 32px;
+        border-radius: 12px;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 16px;
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        margin-top: 24px;
+        position: relative;
+        overflow: hidden;
+        letter-spacing: -0.01em;
+      }
+
+      .contact-button::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .contact-button:hover::before {
+        opacity: 1;
+      }
+
+      .contact-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 24px rgba(255, 255, 255, 0.15);
+        border-color: rgba(255, 255, 255, 0.3);
+      }
+
+      .contact-button:active {
+        transform: translateY(0);
+      }
+
+      .eta-section {
+        margin-top: 24px;
+        padding: 16px 20px;
+        background: rgba(255, 255, 255, 0.04);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-radius: 12px;
+        border: 1px dashed rgba(255, 255, 255, 0.2);
+      }
+
+      .eta-text {
+        color: rgba(255, 255, 255, 0.8);
+        font-weight: 500;
+        font-size: 14px;
+        letter-spacing: -0.01em;
+      }
+
+      .loading-indicator {
+        display: inline-block;
+        margin-left: 8px;
+        opacity: 0.6;
+      }
+
+      .loading-indicator::after {
+        content: "";
+        animation: liquidDots 2s infinite;
+      }
+
+      @keyframes liquidDots {
+        0%,
+        20% {
+          content: "";
+        }
+        40% {
+          content: "•";
+        }
+        60% {
+          content: "••";
+        }
+        80%,
+        100% {
+          content: "•••";
+        }
+      }
+
+      /* Mobile responsiveness */
+      @media (max-width: 768px) {
+        .container {
+          padding: 36px 28px;
+          margin: 16px;
+          border-radius: 20px;
+        }
+
+        h1 {
+          font-size: 36px;
+        }
+
+        .subtitle {
+          font-size: 16px;
+        }
+
+        .back-soon {
+          font-size: 18px;
+        }
+
+        .contact-button {
+          padding: 14px 28px;
+          font-size: 15px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .container {
+          padding: 28px 20px;
+        }
+
+        h1 {
+          font-size: 32px;
+        }
+
+        .glass-card {
+          padding: 20px;
+        }
+
+        .logo {
+          width: 64px;
+          height: 64px;
+          font-size: 28px;
+        }
+      }
+
+      /* Reduced motion for accessibility */
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
   </head>
+  <body>
+    <!-- Liquid glass background orbs -->
+    <div class="glass-orb"></div>
+    <div class="glass-orb"></div>
+    <div class="glass-orb"></div>
+    <div class="glass-orb"></div>
 
-  <body data-ng-app="contactApp" class="iblue">
-    <!--Preloader-->
-    <div class="preloader-it">
-      <div class="la-anim-1"></div>
-    </div>
-    <!--/Preloader-->
-
-    <!--Splitlayout -->
-    <div id="splitlayout" class="splitlayout reset-layout">
-      <!--Intro-->
-      <div class="intro">
-        <!--Left Content Intro-->
-        <div class="side side-left">
-          <!--Main Content-->
-          <section class="col-lg-12 content-wrap padding-left-75 padding-right-75 padding-left-sm-40 padding-right-sm-40 sec-pad-sm sec-pad-xs">
-            <!--Logo-->
-            <img class="logo" src="img/conni-logo-small.png" alt="logo" width="300px" />
-            <!--/Logo-->
-
-            <div class="table-wrap">
-              <div class="tablecell">
-                <!--Ticker-->
-                <div class="tlt">
-                  <ul class="texts">
-                    <li data-in-effect="bounceIn" data-out-effect="fadeOut" data-in-shuffle="true" data-out-shuffle="true">Stay tuned</li>
-                    <li data-in-effect="bounceIn" data-out-effect="fadeOut" data-in-shuffle="true" data-out-shuffle="true">Back Soon</li>
-                    <li data-in-effect="bounceIn" data-out-effect="fadeOut" data-in-shuffle="true" data-out-shuffle="true">We Promise</li>
-                  </ul>
-                </div>
-                <!--/Ticker-->
-
-                <p class="lead col-md-9 col-xs-12 margin-top-10 padding-zero">We are currently working on the problem and anticipate to be no more than 1 hour</p>
-
-                <div class="clearfix"></div>
-
-                <!--Notify Button-->
-                <span class="btn btn-default md-trigger margin-top-35" data-modal="modal-2">
-                  <span class="mask"></span>
-                  <span class="btn-label">
-                    <b>Notify me</b>
-                  </span>
-                </span>
-                <!--/Notify Button-->
-              </div>
-            </div>
-
-            <div class="clearfix"></div>
-          </section>
-          <!--/Main Content-->
-
-          <div class="side-left-overlay"></div>
-        </div>
-        <!--/Left Content Intro-->
-
-        <!--Right Content Intro-->
-        <div class="side side-right">
-          <section class="about-info col-lg-12 padding-left-75 padding-right-75 padding-left-sm-40 padding-right-sm-40 sec-pad-sm sec-pad-xs">
-            <div class="table-wrap">
-              <div class="tablecell">
-                <h2>Australia's most trusted</h2>
-                <p class="margin-bottom-25">Conni has been one of Australia’s leading brands of reusable incontinence products & toilet training aides for more than two decades.</p>
-                <span class="btn btn-default alternate-bg margin-top-25">
-                  <span class="mask"></span>
-                  <span class="btn-label">
-                    <b><a href="mailto:hello@conni.com.au">Contact Us</a></b>
-                  </span>
-                </span>
-              </div>
-            </div>
-          </section>
-        </div>
-        <!--/Right Content Intro-->
+    <div class="container">
+      <div class="logo-container">
+        <div class="logo">C</div>
       </div>
-      <!--/Intro-->
-    </div>
-    <!-- /Splitlayout -->
 
-    <!--Notify Popup-->
-    <div class="md-modal md-effect-2" id="modal-2">
-      <div class="md-content notify-cmpt notify-form-type-3">
-        <div class="md-content-wrap notify-wrap">
-          <div class="md-close" id="notify_close"><span>X</span></div>
-          <h2>Subscribe & Stay Updated</h2>
-          <p class="margin-top-xs-20">We only anticipate being offline for less than 60 mins, but in case you see this, you can keep updated here.</p>
-          <form id="notifyMe" class="contact-form" action="notify-me.php" method="post">
-            <div class="input-wrap">
-              <input data-ng-model="notify" class="col-lg-10 align-center form-control input notify-input-box" name="email" placeholder="Your Email ID" type="email" />
-              <div class="clearfix"></div>
-              <button type="submit" class="btn btn-default progress-button btn-submit align-center">
-                Notify me
-                <span class="mask"></span>
-              </button>
-            </div>
-          </form>
-        </div>
-        <div class="md-opac"></div>
+      <h1>BackSoon</h1>
+
+      <div class="subtitle">Our team is working hard to restore service</div>
+
+      <div class="glass-card message-card">
+        <div class="back-soon">BackSoon</div>
+        <div class="status-text">We are currently working on the problem and anticipate to be no more than 1 hour.</div>
       </div>
-    </div>
-    <div class="md-overlay"></div>
-    <!--/Notify Popup-->
 
-    <!-- Scripts -->
-    <script src="js/jquery-1.11.3.min.js"></script>
-    <script src="js/angular.min.js"></script>
-    <script src="js/modernizr.custom.js"></script>
-    <script src="js/classie.js"></script>
-    <script src="js/cbpSplitLayout.js"></script>
-    <script src="js/jquery.countdown.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/controllers.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/input-text.js"></script>
-    <script src="js/notifyMe.js"></script>
-    <script src="js/jquery.placeholder.js"></script>
-    <script src="js/jquery.lettering.js"></script>
-    <script src="js/jquery.textillate.js"></script>
-    <script src="js/jquery.nicescroll.js"></script>
-    <script src="js/modelclassie.js"></script>
-    <script src="js/modalEffects.js"></script>
-    <script src="js/particles.min.js"></script>
-    <!-- Google Maps API key removed for security - add your own key -->
-    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY_HERE"></script> -->
-    <script src="js/init.js"></script>
+      <div class="glass-card trusted-card">
+        <div class="trusted-title">Australia's most trusted</div>
+        <div class="trusted-text">Conni has been one of Australia's leading brands of reusable incontinence products & toilet training aides for more than two decades.</div>
+      </div>
+
+      <div class="eta-section">
+        <div class="eta-text">Estimated restoration time: &lt; 1 hour<span class="loading-indicator"></span></div>
+      </div>
+
+      <a href="https://paperform.co/" class="contact-button"> Contact Us </a>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Enhanced entrance animation
+        const container = document.querySelector(".container");
+
+        // Add subtle parallax effect to glass orbs
+        document.addEventListener("mousemove", function (e) {
+          const orbs = document.querySelectorAll(".glass-orb");
+          const x = e.clientX / window.innerWidth;
+          const y = e.clientY / window.innerHeight;
+
+          orbs.forEach((orb, index) => {
+            const speed = (index + 1) * 0.5;
+            const xOffset = (x - 0.5) * speed * 20;
+            const yOffset = (y - 0.5) * speed * 20;
+
+            orb.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
+          });
+        });
+
+        // Logo interaction
+        const logo = document.querySelector(".logo");
+        logo.addEventListener("mouseenter", function () {
+          this.style.transform = "translateY(-8px) scale(1.05)";
+        });
+
+        logo.addEventListener("mouseleave", function () {
+          this.style.transform = "translateY(-8px) scale(1)";
+        });
+
+        // Smooth reveal animation for cards
+        const cards = document.querySelectorAll(".glass-card");
+        cards.forEach((card, index) => {
+          card.style.opacity = "0";
+          card.style.transform = "translateY(20px)";
+
+          setTimeout(() => {
+            card.style.transition = "all 0.6s cubic-bezier(0.16, 1, 0.3, 1)";
+            card.style.opacity = "1";
+            card.style.transform = "translateY(0)";
+          }, 300 + index * 150);
+        });
+      });
+    </script>
   </body>
 </html>
