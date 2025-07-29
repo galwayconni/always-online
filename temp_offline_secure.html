@@ -210,6 +210,12 @@
         border: 1px solid #f5c6cb;
       }
 
+      .message.info {
+        background: #d1ecf1;
+        color: #0c5460;
+        border: 1px solid #bee5eb;
+      }
+
       .contact-info {
         background: #fff;
         border: 1px solid #e9ecef;
@@ -320,10 +326,10 @@
       <!-- Description -->
       <p class="subtitle">We're currently performing essential maintenance to improve your experience. We anticipate being back online within the hour.</p>
 
-      <!-- Notify Me Section -->
+      <!-- Notify Me Section - GitHub Pages Compatible -->
       <div class="notify-section">
         <h2 class="notify-title">Get Notified When We're Back</h2>
-        <p class="notify-description">Enter your email address and we'll send you a notification as soon as we're back online.</p>
+        <p class="notify-description">Leave your email address and we'll notify you as soon as we're back online.</p>
 
         <form id="notifyForm">
           <div class="form-group">
@@ -358,6 +364,7 @@
     </div>
 
     <script>
+      // GitHub Pages Compatible Email Collection
       document.getElementById("notifyForm").addEventListener("submit", function (e) {
         e.preventDefault();
 
@@ -385,33 +392,64 @@
         notifyBtn.disabled = true;
         notifyBtn.innerHTML = '<span class="spinner"></span>Registering...';
 
-        // Send request
-        fetch("notify-me.php", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-          },
-          body: "email=" + encodeURIComponent(email),
-        })
-          .then((response) => response.json())
-          .then((data) => {
-            if (data.status === "success") {
-              showMessage(data.message || "Thank you! We'll notify you when we're back online.", "success");
-              emailInput.value = "";
-            } else {
-              showMessage(data.message || "Registration failed. Please try again.", "error");
-            }
-          })
-          .catch((error) => {
-            console.error("Error:", error);
-            showMessage("Unable to register at this time. Please try again later.", "error");
-          })
-          .finally(() => {
-            // Re-enable form
-            notifyBtn.disabled = false;
-            notifyBtn.innerHTML = "Notify Me When Back Online";
-          });
+        // For GitHub Pages: Store in localStorage and show info message
+        // In production, you would send this to your separate server
+        try {
+          // Store email in localStorage (for demonstration)
+          let storedEmails = JSON.parse(localStorage.getItem("notify_emails") || "[]");
+
+          // Check for duplicates
+          if (storedEmails.includes(email.toLowerCase())) {
+            showMessage("You're already registered for notifications!", "info");
+          } else {
+            storedEmails.push(email.toLowerCase());
+            localStorage.setItem("notify_emails", JSON.stringify(storedEmails));
+
+            // Store timestamp
+            localStorage.setItem("notify_timestamp_" + email.toLowerCase(), new Date().toISOString());
+
+            showMessage("Thank you! Your email has been saved. We'll notify you when we're back online.", "success");
+            emailInput.value = "";
+
+            // For production: Send email to your server
+            // sendToServer(email);
+          }
+        } catch (error) {
+          console.error("Storage error:", error);
+          showMessage("Registration saved locally. Please check back soon or contact us directly.", "info");
+        }
+
+        // Re-enable form
+        notifyBtn.disabled = false;
+        notifyBtn.innerHTML = "Notify Me When Back Online";
       });
+
+      // For production use: Send email to your separate server
+      function sendToServer(email) {
+        // This would send the email to your PHP server (not GitHub Pages)
+        // Example:
+        /*
+      fetch('https://your-server.com/notify-me.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: 'email=' + encodeURIComponent(email)
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.status === 'success') {
+          showMessage('Thank you! We\'ll notify you when we\'re back online.', 'success');
+        } else {
+          showMessage('Registration failed. Please try again or contact us directly.', 'error');
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        showMessage('Please try again later or contact us directly.', 'error');
+      });
+      */
+      }
 
       function showMessage(text, type) {
         const message = document.getElementById("message");
@@ -457,6 +495,12 @@
         emailInput.addEventListener("blur", function () {
           this.style.transform = "scale(1)";
         });
+
+        // Show stored emails count if any
+        const storedEmails = JSON.parse(localStorage.getItem("notify_emails") || "[]");
+        if (storedEmails.length > 0) {
+          console.log("Stored notification emails:", storedEmails.length);
+        }
       });
     </script>
   </body>

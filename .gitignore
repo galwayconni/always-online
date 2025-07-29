@@ -1,0 +1,57 @@
+# Security - Never commit these files to public repo
+notify-me.php
+send-notifications.php
+admin.php
+config.php
+config.example.php
+
+# Data directory - contains sensitive user emails
+data/
+*.txt
+*.log
+
+# Environment files
+.env
+.env.local
+.env.production
+
+# Credentials and keys
+credentials.json
+keys/
+secrets/
+
+# PHP specific
+*.php
+!index.php
+
+# Database files
+*.db
+*.sqlite
+
+# Log files
+logs/
+*.log
+
+# Backup files
+*.bak
+backup/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Node modules (if using any JS build tools)
+node_modules/
+npm-debug.log* 
