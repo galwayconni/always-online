@@ -1,11 +1,168 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    Hi, we will be back soon
-</body>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title id="title">Conni Australia - Offline</title>
+		<meta name="description" content="We are working hard right now to fix the problem" />
+		<meta name="keywords" content="" />
+		<meta name="author" content="Galway" />
+		
+		<!--Favicon-->
+		<link rel="shortcut icon" href="favicon.ico">
+		<link rel="icon" href="favicon.ico" type="image/x-icon">
+		
+		<!--Fonts-->
+		<link href='https://fonts.googleapis.com/css?family=Ubuntu:400,300,500,700' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700' rel='stylesheet' type='text/css'>
+		
+		<!--CSS-->
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+	</head>
+	
+	<body data-ng-app="contactApp" class="iblue">
+		<!--Preloader-->
+		<div class="preloader-it">
+			<div class="la-anim-1"></div>
+		</div>
+		<!--/Preloader-->
+		
+		<!--Splitlayout -->
+		<div id="splitlayout" class="splitlayout reset-layout">
+			
+			<!--Intro-->
+			<div class="intro">
+				
+				<!--Left Content Intro-->
+				<div class="side side-left">
+					
+
+					
+					<!--Main Content-->
+					<section class="col-lg-12 content-wrap padding-left-75 padding-right-75 padding-left-sm-40 padding-right-sm-40 sec-pad-sm sec-pad-xs">
+						
+						<!--Logo-->
+						<img class="logo" src="img/conni-logo-small.png" alt="logo" width="300px"/>
+						<!--/Logo-->
+						
+						<div class="table-wrap">
+							<div class="tablecell">
+
+								
+								<!--Ticker-->
+								<div class="tlt">
+									<ul  class="texts">
+										<li data-in-effect="bounceIn" data-out-effect="fadeOut" data-in-shuffle="true" data-out-shuffle="true">
+											Stay tuned
+										</li>
+										<li  data-in-effect="bounceIn" data-out-effect="fadeOut" data-in-shuffle="true" data-out-shuffle="true">
+											Back Soon
+										</li>
+										<li  data-in-effect="bounceIn" data-out-effect="fadeOut" data-in-shuffle="true" data-out-shuffle="true">
+											We Promise
+										</li>
+									</ul>
+								</div>
+								<!--/Ticker-->
+								
+								<p class="lead col-md-9 col-xs-12 margin-top-10 padding-zero">We are currently working on the problem and anticipate to be no more than 1 hour</p>
+								
+								<div class="clearfix"></div>
+								
+								<!--Notify Button-->
+								<span class="btn btn-default md-trigger margin-top-35" data-modal="modal-2">
+									<span class="mask"></span>
+									<span class="btn-label">
+										<b>Notify me</b>
+									</span>
+								</span>
+								<!--/Notify Button-->
+								
+							</div>	
+						</div>
+						
+
+						
+						<div class="clearfix"></div>
+						
+					</section>
+					<!--/Main Content-->
+									
+					<div class="side-left-overlay"></div>
+				</div>
+				<!--/Left Content Intro-->
+				
+				<!--Right Content Intro-->
+				<div class="side side-right">
+					<section class="about-info col-lg-12 padding-left-75 padding-right-75 padding-left-sm-40 padding-right-sm-40 sec-pad-sm sec-pad-xs">
+						<div class="table-wrap">
+							<div class="tablecell">
+								<h2>Australia's most trusted</h2>
+								<p class="margin-bottom-25">Conni has been one of Australia’s leading brands of reusable incontinence products & toilet training aides for more than two decades. </p>
+								<span class="btn btn-default alternate-bg margin-top-25">
+									<span class="mask"></span>
+									<span class="btn-label">
+										<b><a href="mailto:hello@conni.com.au">Contact Us</a></b>
+									</span>
+								</span>
+							</div>
+						</div>	
+					</section>
+
+					
+				</div>
+				<!--/Right Content Intro-->
+			</div>
+			<!--/Intro-->
+
+			
+		</div>
+		<!-- /Splitlayout -->
+		
+		<!--Notify Popup-->
+		<div class="md-modal md-effect-2" id="modal-2">
+			<div class="md-content notify-cmpt notify-form-type-3">
+				<div class="md-content-wrap notify-wrap">
+					<div class="md-close" id="notify_close"><span>X</span></div>
+					<h2>Subscribe & Stay Updated</h2>
+					<p class="margin-top-xs-20">We only anticipate being offline for less than 60 mins, but in case you see this, you can keep updated here.</p>
+					<form id="notifyMe" class="contact-form" action="notify-me.php" method="post">
+						<div class="input-wrap">
+							<input  data-ng-model="notify" class="col-lg-10  align-center form-control input notify-input-box" name="email" placeholder="Your Email ID"  type="email">
+							<div class="clearfix"></div>
+							<button type="submit"  class="btn btn-default progress-button btn-submit align-center">
+								Notify me
+								<span class="mask"></span>
+							</button>
+						</div>	
+					</form>
+				</div>
+				<div class="md-opac"></div>
+			</div>
+		</div>
+		<div class="md-overlay"></div>
+		<!--/Notify Popup-->
+		
+		<!-- Scripts -->
+		<script src="js/jquery-1.11.3.min.js"></script>
+		<script src="js/angular.min.js"></script>
+		<script src="js/modernizr.custom.js"></script>
+		<script src="js/classie.js"></script>
+		<script src="js/cbpSplitLayout.js"></script>
+		<script src="js/jquery.countdown.js"></script>
+		<script src="js/app.js"></script>
+		<script src="js/controllers.js"></script>
+		<script src="js/owl.carousel.min.js"></script>
+		<script src="js/input-text.js"></script>
+		<script src="js/notifyMe.js"></script>
+		<script src="js/jquery.placeholder.js"></script>
+		<script src="js/jquery.lettering.js"></script>
+		<script src="js/jquery.textillate.js"></script>
+		<script src="js/jquery.nicescroll.js"></script>
+		<script src="js/modelclassie.js"></script>
+		<script src="js/modalEffects.js"></script>
+		<script src="js/particles.min.js"></script>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBxXt2P7-U38bK0xEFIT-ebZJ1ngK8wjww"></script>
+		<script src="js/init.js"></script>
+	</body>
 </html>
