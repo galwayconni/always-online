@@ -13,8 +13,10 @@
       }
 
       body {
-        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
-        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 30%, #0f3460 100%);
+        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", sans-serif;
+        background: linear-gradient(135deg, #000000 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #1a1a2e 100%);
+        background-size: 400% 400%;
+        animation: gradientShift 20s ease infinite;
         min-height: 100vh;
         display: flex;
         align-items: center;
@@ -22,18 +24,32 @@
         position: relative;
         overflow-x: hidden;
         -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
         color: #ffffff;
+        text-rendering: optimizeLegibility;
       }
 
-      /* Liquid glass background elements */
+      @keyframes gradientShift {
+        0%,
+        100% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+      }
+
+      /* Enhanced liquid glass background elements */
       .glass-orb {
         position: absolute;
         border-radius: 50%;
-        background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.03));
+        backdrop-filter: blur(40px) saturate(180%);
+        -webkit-backdrop-filter: blur(40px) saturate(180%);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.05);
         animation: floatGlass 8s ease-in-out infinite;
+        will-change: transform, opacity;
       }
 
       .glass-orb:nth-child(1) {
@@ -89,15 +105,15 @@
       }
 
       .container {
-        background: rgba(255, 255, 255, 0.08);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        border-radius: 24px;
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        padding: 48px 40px;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.08) 50%, rgba(255, 255, 255, 0.06) 100%);
+        backdrop-filter: blur(60px) saturate(200%) brightness(110%);
+        -webkit-backdrop-filter: blur(60px) saturate(200%) brightness(110%);
+        border-radius: 32px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        padding: 56px 48px;
         text-align: center;
-        box-shadow: 0 32px 64px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-        max-width: 520px;
+        box-shadow: 0 40px 80px rgba(0, 0, 0, 0.25), 0 16px 32px rgba(0, 0, 0, 0.15), inset 0 2px 0 rgba(255, 255, 255, 0.15), inset 0 0 0 1px rgba(255, 255, 255, 0.05), 0 0 0 1px rgba(255, 255, 255, 0.08);
+        max-width: 560px;
         width: 90%;
         position: relative;
         animation: containerAppear 1.2s cubic-bezier(0.16, 1, 0.3, 1);
@@ -115,28 +131,131 @@
       }
 
       .logo-container {
-        margin-bottom: 32px;
+        margin-bottom: clamp(20px, 4vw, 40px);
         position: relative;
+        width: 100%;
+        max-width: 300px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 0 10px;
       }
 
       .logo {
-        width: 72px;
-        height: 72px;
-        background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
-        backdrop-filter: blur(15px);
-        -webkit-backdrop-filter: blur(15px);
-        border-radius: 20px;
-        border: 1px solid rgba(255, 255, 255, 0.2);
+        width: clamp(80px, 12vw, 120px);
+        height: clamp(80px, 12vw, 120px);
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.12) 50%, rgba(255, 255, 255, 0.08) 100%);
+        backdrop-filter: blur(30px) saturate(180%) brightness(120%);
+        -webkit-backdrop-filter: blur(30px) saturate(180%) brightness(120%);
+        border-radius: clamp(18px, 3.5vw, 28px);
+        border: 1px solid rgba(255, 255, 255, 0.25);
         margin: 0 auto;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 32px;
-        font-weight: 600;
-        color: rgba(255, 255, 255, 0.9);
         position: relative;
         animation: logoFloat 3s ease-in-out infinite;
-        box-shadow: 0 8px 32px rgba(255, 255, 255, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        box-shadow: 0 12px 40px rgba(255, 255, 255, 0.12), 0 4px 16px rgba(0, 0, 0, 0.2), inset 0 2px 0 rgba(255, 255, 255, 0.25), inset 0 0 0 1px rgba(255, 255, 255, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.1);
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        overflow: hidden;
+      }
+
+      .logo img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center;
+        max-width: 100%;
+        max-height: 100%;
+        padding: clamp(8px, 2vw, 16px);
+        transition: transform 0.3s ease;
+      }
+
+      .logo:hover img {
+        transform: scale(1.05);
+      }
+
+      /* Apple-style glass morphism enhancements */
+      .container::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 32px;
+        padding: 1px;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.1) 25%, transparent 50%, rgba(255, 255, 255, 0.1) 75%, rgba(255, 255, 255, 0.2) 100%);
+        mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        mask-composite: xor;
+        -webkit-mask-composite: xor;
+        pointer-events: none;
+        animation: borderShimmer 6s ease-in-out infinite;
+      }
+
+      @keyframes borderShimmer {
+        0%,
+        100% {
+          opacity: 0.5;
+        }
+        50% {
+          opacity: 1;
+        }
+      }
+
+      /* Enhanced micro-interactions */
+      .glass-card,
+      .contact-button,
+      .logo {
+        will-change: transform, box-shadow, border-color;
+      }
+
+      /* High contrast and dark mode support */
+      @media (prefers-contrast: high) {
+        .logo {
+          border: 2px solid rgba(255, 255, 255, 0.8);
+          background: rgba(255, 255, 255, 0.2);
+        }
+
+        .glass-card {
+          border: 2px solid rgba(255, 255, 255, 0.3);
+          background: rgba(255, 255, 255, 0.15);
+        }
+      }
+
+      /* Ensure logo is visible in all lighting conditions */
+      @media (prefers-color-scheme: dark) {
+        .logo img {
+          filter: brightness(1.1) contrast(1.1);
+        }
+      }
+
+      /* Loading state for logo */
+      .logo img[loading] {
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .logo img[loading].loaded {
+        opacity: 1;
+      }
+
+      /* Apple-style focus states */
+      .contact-button:focus-visible {
+        outline: 2px solid rgba(255, 255, 255, 0.6);
+        outline-offset: 4px;
+        transform: translateY(-2px) scale(1.01);
+      }
+
+      /* Subtle animation improvements */
+      @keyframes liquidGlow {
+        0%,
+        100% {
+          box-shadow: 0 0 20px rgba(255, 255, 255, 0.1), 0 0 40px rgba(255, 255, 255, 0.05), 0 0 60px rgba(255, 255, 255, 0.02);
+        }
+        50% {
+          box-shadow: 0 0 30px rgba(255, 255, 255, 0.15), 0 0 60px rgba(255, 255, 255, 0.08), 0 0 90px rgba(255, 255, 255, 0.04);
+        }
+      }
+
+      .container {
+        animation: liquidGlow 8s ease-in-out infinite;
       }
 
       @keyframes logoFloat {
@@ -174,35 +293,54 @@
       }
 
       h1 {
-        font-size: 48px;
+        font-size: clamp(36px, 6vw, 64px);
         font-weight: 700;
-        background: linear-gradient(135deg, #ffffff, rgba(255, 255, 255, 0.7));
+        background: linear-gradient(135deg, #ffffff 0%, rgba(255, 255, 255, 0.95) 25%, rgba(255, 255, 255, 0.85) 50%, rgba(255, 255, 255, 0.9) 75%, #ffffff 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
-        margin-bottom: 16px;
-        letter-spacing: -0.02em;
-        line-height: 1.1;
+        background-size: 200% 200%;
+        animation: textShimmer 4s ease-in-out infinite;
+        margin-bottom: 20px;
+        letter-spacing: -0.025em;
+        line-height: 1.05;
+        text-shadow: 0 0 40px rgba(255, 255, 255, 0.3);
+      }
+
+      @keyframes textShimmer {
+        0%,
+        100% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
       }
 
       .subtitle {
-        font-size: 17px;
-        color: rgba(255, 255, 255, 0.7);
-        margin-bottom: 32px;
-        font-weight: 400;
-        line-height: 1.4;
+        font-size: clamp(16px, 2.5vw, 19px);
+        color: rgba(255, 255, 255, 0.75);
+        margin-bottom: 40px;
+        font-weight: 450;
+        line-height: 1.45;
+        letter-spacing: -0.01em;
+        max-width: 480px;
+        margin-left: auto;
+        margin-right: auto;
       }
 
       .glass-card {
-        background: rgba(255, 255, 255, 0.06);
-        backdrop-filter: blur(15px);
-        -webkit-backdrop-filter: blur(15px);
-        border-radius: 16px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        padding: 24px;
-        margin: 24px 0;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.09) 0%, rgba(255, 255, 255, 0.06) 50%, rgba(255, 255, 255, 0.04) 100%);
+        backdrop-filter: blur(40px) saturate(180%) brightness(105%);
+        -webkit-backdrop-filter: blur(40px) saturate(180%) brightness(105%);
+        border-radius: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        padding: 28px;
+        margin: 28px 0;
         position: relative;
         overflow: hidden;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.06);
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
       }
 
       .glass-card::before {
@@ -211,8 +349,15 @@
         top: 0;
         left: 0;
         right: 0;
-        height: 1px;
-        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+        height: 2px;
+        background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.4) 25%, rgba(255, 255, 255, 0.6) 50%, rgba(255, 255, 255, 0.4) 75%, transparent 100%);
+        border-radius: 20px 20px 0 0;
+      }
+
+      .glass-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.2);
       }
 
       .message-card {
@@ -284,21 +429,22 @@
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        background: rgba(255, 255, 255, 0.15);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.12) 50%, rgba(255, 255, 255, 0.15) 100%);
+        backdrop-filter: blur(30px) saturate(180%) brightness(110%);
+        -webkit-backdrop-filter: blur(30px) saturate(180%) brightness(110%);
         color: rgba(255, 255, 255, 0.95);
-        padding: 16px 32px;
-        border-radius: 12px;
+        padding: 18px 36px;
+        border-radius: 16px;
         text-decoration: none;
         font-weight: 500;
-        font-size: 16px;
-        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        margin-top: 24px;
+        font-size: clamp(15px, 2vw, 17px);
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        margin-top: 32px;
         position: relative;
         overflow: hidden;
         letter-spacing: -0.01em;
+        box-shadow: 0 8px 24px rgba(255, 255, 255, 0.1), 0 4px 8px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.08);
       }
 
       .contact-button::before {
@@ -315,9 +461,10 @@
       }
 
       .contact-button:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 12px 24px rgba(255, 255, 255, 0.15);
-        border-color: rgba(255, 255, 255, 0.3);
+        transform: translateY(-4px) scale(1.02);
+        box-shadow: 0 16px 40px rgba(255, 255, 255, 0.2), 0 8px 16px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.12);
+        border-color: rgba(255, 255, 255, 0.35);
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.16) 50%, rgba(255, 255, 255, 0.18) 100%);
       }
 
       .contact-button:active {
@@ -325,13 +472,16 @@
       }
 
       .eta-section {
-        margin-top: 24px;
-        padding: 16px 20px;
-        background: rgba(255, 255, 255, 0.04);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        border-radius: 12px;
-        border: 1px dashed rgba(255, 255, 255, 0.2);
+        margin-top: 32px;
+        padding: 20px 24px;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.04) 50%, rgba(255, 255, 255, 0.05) 100%);
+        backdrop-filter: blur(30px) saturate(150%);
+        -webkit-backdrop-filter: blur(30px) saturate(150%);
+        border-radius: 16px;
+        border: 1px dashed rgba(255, 255, 255, 0.25);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+        position: relative;
+        overflow: hidden;
       }
 
       .eta-text {
@@ -369,49 +519,119 @@
         }
       }
 
-      /* Mobile responsiveness */
-      @media (max-width: 768px) {
+      /* Apple-style responsive breakpoints */
+      @media (max-width: 1024px) {
         .container {
-          padding: 36px 28px;
-          margin: 16px;
-          border-radius: 20px;
+          max-width: 520px;
+          padding: 48px 40px;
         }
 
-        h1 {
-          font-size: 36px;
+        .logo-container {
+          max-width: 280px;
         }
 
-        .subtitle {
-          font-size: 16px;
-        }
-
-        .back-soon {
-          font-size: 18px;
-        }
-
-        .contact-button {
-          padding: 14px 28px;
-          font-size: 15px;
+        .glass-orb {
+          backdrop-filter: blur(30px) saturate(160%);
+          -webkit-backdrop-filter: blur(30px) saturate(160%);
         }
       }
 
-      @media (max-width: 480px) {
+      /* Tablet responsiveness */
+      @media (max-width: 768px) {
         .container {
-          padding: 28px 20px;
+          padding: 40px 32px;
+          margin: 20px;
+          border-radius: 28px;
+          max-width: 480px;
         }
 
-        h1 {
-          font-size: 32px;
+        .logo-container {
+          max-width: 240px;
+          margin-bottom: clamp(20px, 4vw, 32px);
+        }
+
+        .glass-card {
+          padding: 24px;
+          margin: 24px 0;
+          border-radius: 18px;
+        }
+
+        .contact-button {
+          padding: 16px 32px;
+          border-radius: 14px;
+        }
+
+        .eta-section {
+          padding: 18px 22px;
+          border-radius: 14px;
+        }
+      }
+
+      /* Mobile responsiveness */
+      @media (max-width: 480px) {
+        .container {
+          padding: 32px 24px;
+          margin: 16px;
+          border-radius: 24px;
+          max-width: 100%;
+          width: calc(100% - 32px);
+        }
+
+        .logo-container {
+          max-width: 200px;
+          padding: 0 8px;
         }
 
         .glass-card {
           padding: 20px;
+          margin: 20px 0;
+          border-radius: 16px;
         }
 
-        .logo {
-          width: 64px;
-          height: 64px;
-          font-size: 28px;
+        .contact-button {
+          padding: 14px 28px;
+          border-radius: 12px;
+        }
+
+        .eta-section {
+          padding: 16px 20px;
+          border-radius: 12px;
+        }
+
+        .glass-orb {
+          backdrop-filter: blur(20px) saturate(140%);
+          -webkit-backdrop-filter: blur(20px) saturate(140%);
+        }
+      }
+
+      /* Extra small screens */
+      @media (max-width: 320px) {
+        .container {
+          padding: 28px 20px;
+          border-radius: 20px;
+        }
+
+        .logo-container {
+          max-width: 180px;
+        }
+
+        .logo img {
+          padding: clamp(6px, 1.5vw, 12px);
+        }
+
+        .glass-card {
+          padding: 18px;
+        }
+      }
+
+      /* High-end device optimizations */
+      @media (min-width: 1025px) and (-webkit-min-device-pixel-ratio: 2) {
+        .container,
+        .glass-card,
+        .logo,
+        .contact-button {
+          backdrop-filter: blur(80px) saturate(200%) brightness(115%);
+          -webkit-backdrop-filter: blur(80px) saturate(200%) brightness(115%);
         }
       }
 
@@ -434,7 +654,9 @@
 
     <div class="container">
       <div class="logo-container">
-        <div class="logo">C</div>
+        <div class="logo">
+          <img src="./conni-logo-small.png" alt="Conni Australia Logo" loading="lazy" />
+        </div>
       </div>
 
       <h1>BackSoon</h1>
@@ -442,7 +664,7 @@
       <div class="subtitle">Our team is working hard to restore service</div>
 
       <div class="glass-card message-card">
-        <div class="back-soon">BackSoon</div>
+        <!-- <div class="back-soon">BackSoon</div> -->
         <div class="status-text">We are currently working on the problem and anticipate to be no more than 1 hour.</div>
       </div>
 
@@ -455,7 +677,7 @@
         <div class="eta-text">Estimated restoration time: &lt; 1 hour<span class="loading-indicator"></span></div>
       </div>
 
-      <a href="https://paperform.co/" class="contact-button"> Contact Us </a>
+      <a href="https://contact-conni.paperform.co/" class="contact-button"> Contact Us </a>
     </div>
 
     <script>
@@ -478,15 +700,45 @@
           });
         });
 
-        // Logo interaction
+        // Logo loading and interaction
         const logo = document.querySelector(".logo");
-        logo.addEventListener("mouseenter", function () {
-          this.style.transform = "translateY(-8px) scale(1.05)";
-        });
+        const logoImg = document.querySelector(".logo img");
 
-        logo.addEventListener("mouseleave", function () {
-          this.style.transform = "translateY(-8px) scale(1)";
-        });
+        // Handle logo loading
+        if (logoImg) {
+          logoImg.onload = function () {
+            this.classList.add("loaded");
+          };
+
+          // If already loaded (cached)
+          if (logoImg.complete) {
+            logoImg.classList.add("loaded");
+          }
+        }
+
+        // Enhanced logo interaction with accessibility
+        if (logo) {
+          logo.addEventListener("mouseenter", function () {
+            this.style.transform = "translateY(-8px) scale(1.05)";
+          });
+
+          logo.addEventListener("mouseleave", function () {
+            this.style.transform = "translateY(-8px) scale(1)";
+          });
+
+          // Add keyboard support for accessibility
+          logo.setAttribute("tabindex", "0");
+          logo.addEventListener("focus", function () {
+            this.style.transform = "translateY(-8px) scale(1.05)";
+            this.style.outline = "2px solid rgba(255, 255, 255, 0.6)";
+            this.style.outlineOffset = "4px";
+          });
+
+          logo.addEventListener("blur", function () {
+            this.style.transform = "translateY(-8px) scale(1)";
+            this.style.outline = "none";
+          });
+        }
 
         // Smooth reveal animation for cards
         const cards = document.querySelectorAll(".glass-card");
