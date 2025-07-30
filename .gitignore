@@ -4,7 +4,6 @@ send-notifications.php
 admin.php
 config.php
 config.example.php
-.DS_Store
 # Data directory - contains sensitive user emails
 data/
 *.txt
@@ -37,6 +36,7 @@ logs/
 backup/
 
 # OS generated files
+*DS_Store
 .DS_Store
 .DS_Store?
 ._*
